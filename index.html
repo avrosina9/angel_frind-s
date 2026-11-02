@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤسسة أصدقاء الملائكة لرعاية ذوي القدرات الخاصة</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        logoGreen: '#16a34a',
+                        logoGreenBright: '#25d366',
+                        logoOrange: '#ff6b00',
+                        logoOrangeDark: '#ea580c',
+                        logoBlue: '#0284c7',
+                        logoBlueLight: '#0ea5e9',
+                        bgSoft: '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0b132b 0%, #1a1a2e 50%, #0f172a 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+        }
+
+        /* Glass and Elevated Dark Cards */
+        .card-style {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animated Pulsing Ring for CTA */
+        @keyframes subtlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .animate-pulse-slow {
+            animation: subtlePulse 2.5s infinite ease-in-out;
+        }
+
+        .gradient-text-logo {
+            background: linear-gradient(135deg, #22c55e 0%, #ff6b00 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-slate-100 flex flex-col items-center justify-between p-3 sm:p-6 min-h-screen relative overflow-x-hidden">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 ease-out bg-slate-900 text-white px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2 border border-logoOrange/40 pointer-events-none text-xs sm:text-sm font-bold">
+        <i class="fa-solid fa-circle-check text-logoGreenBright text-base"></i>
+        <span id="toast-message">تم النسخ بنجاح!</span>
+    </div>
+
+    <!-- Main Container Wrapper -->
+    <main class="w-full max-w-md mx-auto my-auto space-y-4 py-2">
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: HEADER & IDENTITY (التعريف بالمؤسسة واللوجو) -->
+        <!-- ========================================== -->
+        <section class="card-style rounded-3xl p-6 text-center relative border-t-8 border-t-logoOrange overflow-hidden shadow-2xl">
+            <!-- Background Decorative Spheres -->
+            <div class="absolute -top-12 -right-12 w-28 h-28 bg-logoGreen/20 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-28 h-28 bg-logoBlue/20 rounded-full blur-xl pointer-events-none"></div>
+
+            <!-- Official Logo Container -->
+            <div class="relative w-40 h-40 mx-auto mb-4 p-1 bg-black rounded-full shadow-[0_0_35px_rgba(56,189,248,0.35)] border-4 border-sky-500/80 ring-4 ring-logoOrange/40 flex items-center justify-center overflow-hidden transition-transform hover:scale-105 duration-300">
+                <img src="https://i.postimg.cc/P55MH2YF/lwjw-sghyr.png" alt="لوجو مؤسسة أصدقاء الملائكة" class="w-full h-full object-contain rounded-full bg-black p-1" />
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="text-xl sm:text-2xl font-black text-white leading-snug mb-2">
+                مؤسسة أصدقاء الملائكة<br>
+                <span class="text-emerald-400 text-lg sm:text-xl font-extrabold">لرعاية ذوي القدرات الخاصة</span>
+            </h1>
+
+            <!-- Registration Badge -->
+            <div class="inline-flex items-center gap-1.5 bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md mb-3">
+                <i class="fa-solid fa-award text-sm"></i>
+                <span>المشهرة برقم ٨٥٨٥ لعام ٢٠١٢</span>
+            </div>
+
+            <!-- Slogan -->
+            <p class="text-xs sm:text-sm font-bold text-slate-200 bg-slate-900/80 border border-slate-700/80 py-2.5 px-3 rounded-2xl shadow-sm">
+                معاً.. نحو حياة أفضل <span class="text-logoOrange mx-1 font-black">|</span> معاً نصنع الفارق
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: DIRECT CONTACT & LOCATION (الاتصال والتواصل المباشر) -->
+        <!-- ========================================== -->
+        <section class="card-style rounded-3xl p-5 shadow-lg border-t-4 border-t-logoGreen">
+            <h2 class="text-sm font-extrabold text-slate-100 mb-3.5 flex items-center gap-2 border-b border-slate-800 pb-2">
+                <span class="w-7 h-7 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center text-xs border border-emerald-800">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </span>
+                <span>الاتصال والتواصل المباشر</span>
+            </h2>
+
+            <div class="space-y-2.5">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/201228489636" target="_blank" rel="noopener" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-2xl shadow-md transition flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-emerald-100 font-bold">محادثات عبر الواتساب</div>
+                            <div class="text-sm font-extrabold font-mono dir-ltr text-right">01228489636</div>
+                        </div>
+                    </div>
+                    <span class="bg-white/20 px-3 py-1 rounded-xl text-xs font-bold group-hover:bg-white group-hover:text-emerald-800 transition">راسلنا</span>
+                </a>
+
+                <!-- Main Direct Call -->
+                <a href="tel:01222785777" class="w-full bg-slate-900 hover:bg-slate-800 text-white p-3.5 rounded-2xl shadow-md transition flex items-center justify-between group border border-slate-700">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-logoOrange/20 text-logoOrange flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-300 font-bold">اتصل بنا (الخط الرئيسي)</div>
+                            <div class="text-sm font-extrabold text-logoOrange font-mono dir-ltr text-right">01222785777</div>
+                        </div>
+                    </div>
+                    <span class="bg-logoOrange text-white px-3 py-1 rounded-xl text-xs font-bold group-hover:bg-amber-600 transition">اتصال مباشر</span>
+                </a>
+
+                <!-- Secondary Line -->
+                <a href="tel:01203228446" class="w-full bg-slate-800/80 hover:bg-sky-950/70 border border-slate-700 p-3 rounded-2xl transition flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-sky-950 text-sky-400 border border-sky-800 flex items-center justify-center text-sm font-bold">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-300 font-bold">خط إضافي للتواصل</div>
+                            <div class="text-sm font-extrabold text-slate-100 font-mono dir-ltr text-right">01203228446</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-left text-xs text-slate-400 group-hover:-translate-x-1 transition-transform"></i>
+                </a>
+
+                <!-- Full Address Card -->
+                <div class="bg-amber-950/40 border border-amber-800/60 p-3 rounded-2xl flex items-start gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base shrink-0 mt-0.5 font-black">
+                        <i class="fa-solid fa-building-flag"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-bold text-amber-400">العنوان الرسمي للمؤسسة</div>
+                        <div class="text-xs font-semibold text-slate-200 leading-relaxed mt-0.5">
+                            ٦ ش محمد فارس من ش العبادي - عين شمس الغربية - المطرية - القاهرة
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Location -->
+                <a href="https://maps.app.goo.gl/5kfxaLahbkyYoUNaA?g_st=iwb" target="_blank" rel="noopener" class="w-full bg-sky-600 hover:bg-sky-500 text-white p-3 rounded-2xl shadow-sm transition flex items-center justify-between group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-base">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-sky-100 font-bold">لوكيشن المؤسسة على الخريطة</div>
+                            <div class="text-[11px] text-sky-200">افتح الخريطة للوصول المباشر</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80 group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: SOCIAL MEDIA PLATFORMS (منصات التواصل الاجتماعي) -->
+        <!-- ========================================== -->
+        <section class="card-style rounded-3xl p-5 shadow-lg border-t-4 border-t-logoBlue">
+            <h2 class="text-sm font-extrabold text-slate-100 mb-3.5 flex items-center gap-2 border-b border-slate-800 pb-2">
+                <span class="w-7 h-7 rounded-lg bg-sky-950 text-sky-400 flex items-center justify-center text-xs border border-sky-800">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </span>
+                <span>منصات التواصل الاجتماعي</span>
+            </h2>
+
+            <div class="grid grid-cols-2 gap-2.5">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/hArsa9jZFX5x9kgJ/?mibextid=LQQJ4d" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-blue-950/60 hover:bg-blue-600 hover:text-white border border-blue-800/80 rounded-2xl text-blue-300 transition group">
+                    <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center text-base shrink-0 group-hover:bg-white group-hover:text-blue-600 transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div class="text-right overflow-hidden">
+                        <div class="text-xs font-black">فيسبوك</div>
+                        <div class="text-[10px] opacity-75 truncate">الصفحة الرسمية</div>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/angelsfriends8585?igsh=MTh3NG41Mml4MW52OA%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-pink-950/60 hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 hover:text-white border border-pink-800/80 rounded-2xl text-pink-300 transition group">
+                    <div class="w-9 h-9 rounded-xl bg-pink-600 text-white flex items-center justify-center text-base shrink-0 group-hover:bg-white group-hover:text-pink-600 transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="text-right overflow-hidden">
+                        <div class="text-xs font-black">إنستغرام</div>
+                        <div class="text-[10px] opacity-75 truncate">معرض الصور</div>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@angel.friends.foundation?_r=1&_t=ZT-9B3RTSGstuH" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-slate-900 hover:bg-slate-800 hover:text-white border border-slate-700 rounded-2xl text-slate-200 transition group">
+                    <div class="w-9 h-9 rounded-xl bg-slate-800 text-white flex items-center justify-center text-base shrink-0 group-hover:bg-white group-hover:text-slate-900 transition">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <div class="text-right overflow-hidden">
+                        <div class="text-xs font-black">تيك توك</div>
+                        <div class="text-[10px] opacity-75 truncate">فيديوهات المؤسسة</div>
+                    </div>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/channel/UC2Yux2Hi40wXeWVaywmPaFA?si=ylNFSiucSvXXIdLv" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-red-950/60 hover:bg-red-600 hover:text-white border border-red-800/80 rounded-2xl text-red-300 transition group">
+                    <div class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center text-base shrink-0 group-hover:bg-white group-hover:text-red-600 transition">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div class="text-right overflow-hidden">
+                        <div class="text-xs font-black">يوتيوب</div>
+                        <div class="text-[10px] opacity-75 truncate">القناة الرسمية</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: DONATIONS SECTION (دعم المؤسسة والتبرع) -->
+        <!-- ========================================== -->
+        <section class="card-style rounded-3xl p-5 shadow-xl border-t-4 border-t-logoOrange bg-gradient-to-b from-slate-900 to-slate-950">
+            <div class="text-center mb-4 pb-3 border-b border-slate-800">
+                <span class="inline-block bg-orange-950/80 text-logoOrange border border-orange-800/80 text-[11px] font-black px-3 py-1 rounded-full mb-1">
+                    <i class="fa-solid fa-heart text-xs ml-1 text-red-500"></i> بوابات الدعم المباشرة
+                </span>
+                <h2 class="text-base font-black text-white">ساهم في دعم رسالتنا</h2>
+                <p class="text-xs font-semibold text-slate-300 mt-1 leading-snug">
+                    مساهمتك تساعد في دعم خدماتنا للأشخاص من ذوي القدرات الخاصة
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <!-- InstaPay Card -->
+                <div class="bg-indigo-950/90 text-white rounded-2xl p-4 shadow-lg border border-indigo-700/80 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded uppercase">InstaPay</span>
+                            <span class="text-xs text-indigo-200 font-semibold">عنوان الدفع اللحظي</span>
+                        </div>
+                        <span class="text-[10px] text-indigo-300 italic">Powered by InstaPay</span>
+                    </div>
+
+                    <div class="bg-indigo-900/90 p-2.5 rounded-xl border border-indigo-700/80 flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs sm:text-sm font-black text-amber-300 dir-ltr select-all">asdkaelmalyka@instapay</span>
+                        <button onclick="copyToClipboard('asdkaelmalyka@instapay', 'عنوان InstaPay')" class="bg-amber-400 hover:bg-amber-300 text-slate-950 px-2.5 py-1 rounded-lg text-xs font-black transition flex items-center gap-1 active:scale-95">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>نسخ</span>
+                        </button>
+                    </div>
+
+                    <a href="https://ipn.eg/S/asdkaelmalyka/instapay/7dtPmd" target="_blank" rel="noopener" class="w-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-md">
+                        <i class="fa-solid fa-bolt text-sm"></i>
+                        <span>اضغط هنا لإرسال التبرع مباشرة عبر InstaPay</span>
+                    </a>
+                </div>
+
+                <!-- Vodafone Cash -->
+                <div class="bg-slate-900/90 border border-slate-800 hover:border-red-500 rounded-2xl p-3.5 shadow-sm transition">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center text-lg font-black shadow-sm">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-bold">محفظة فودافون كاش (Vodafone Cash)</div>
+                                <div class="text-sm font-black text-white dir-ltr text-right font-mono mt-0.5">01024032754</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="copyToClipboard('01024032754', 'رقم فودافون كاش')" class="bg-slate-800 hover:bg-red-600 hover:text-white text-slate-200 px-2.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-700">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a href="tel:01024032754" class="bg-red-950 text-red-400 hover:bg-red-600 hover:text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition border border-red-800">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orange Cash -->
+                <div class="bg-slate-900/90 border border-slate-800 hover:border-orange-500 rounded-2xl p-3.5 shadow-sm transition">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center text-lg font-black shadow-sm">
+                                <i class="fa-solid fa-mobile-retro"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-bold">محفظة أورنج كاش (Orange Cash)</div>
+                                <div class="text-sm font-black text-white dir-ltr text-right font-mono mt-0.5">01203228446</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="copyToClipboard('01203228446', 'رقم أورنج كاش')" class="bg-slate-800 hover:bg-orange-500 hover:text-white text-slate-200 px-2.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-700">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <a href="tel:01203228446" class="bg-orange-950 text-orange-400 hover:bg-orange-500 hover:text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition border border-orange-800">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 5: VOLUNTEERING SECTION (الانضمام إلى فريق المتطوعين) -->
+        <!-- ========================================== -->
+        <section class="animate-pulse-slow">
+            <a href="https://tripetto.app/run/PXSKKC23JD" target="_blank" rel="noopener" class="w-full bg-gradient-to-r from-logoGreen to-emerald-700 hover:from-emerald-700 hover:to-logoGreen text-white p-4 rounded-3xl shadow-xl transition flex items-center justify-between border-2 border-emerald-400/60 group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-2xl bg-white/20 text-white flex items-center justify-center text-xl shadow-inner">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm font-black text-white">الانضمام إلى فريق المتطوعين</div>
+                        <div class="text-xs text-emerald-100 font-medium">سجل بياناتك وانضم لرسالتنا اليوم</div>
+                    </div>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white text-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                </div>
+            </a>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: UTILITY ACTIONS & FOOTER (حفظ البيانات، المشاركة، ورمز الباركود) -->
+        <!-- ========================================== -->
+        <section class="grid grid-cols-3 gap-2.5 pt-2">
+            <!-- Save Contact -->
+            <button onclick="downloadVCard()" class="card-style hover:bg-slate-800 hover:text-white p-3 rounded-2xl text-slate-100 font-extrabold text-xs flex flex-col items-center gap-1.5 transition active:scale-95 shadow-md">
+                <i class="fa-solid fa-address-book text-base text-emerald-400"></i>
+                <span>حفظ البيانات</span>
+            </button>
+
+            <!-- Share Page -->
+            <button onclick="sharePage()" class="card-style hover:bg-slate-800 hover:text-white p-3 rounded-2xl text-slate-100 font-extrabold text-xs flex flex-col items-center gap-1.5 transition active:scale-95 shadow-md">
+                <i class="fa-solid fa-share-nodes text-base text-sky-400"></i>
+                <span>مشاركة الصفحة</span>
+            </button>
+
+            <!-- Show QR Code Modal -->
+            <button onclick="openQRModal()" class="card-style hover:bg-slate-800 hover:text-white p-3 rounded-2xl text-slate-100 font-extrabold text-xs flex flex-col items-center gap-1.5 transition active:scale-95 shadow-md">
+                <i class="fa-solid fa-qrcode text-base text-logoOrange"></i>
+                <span>رمز QR</span>
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-400 text-xs font-semibold space-y-1 pt-4 pb-6">
+            <p>جميع الحقوق محفوظة © <span id="year"></span> لمؤسسة أصدقاء الملائكة</p>
+            <p class="text-[11px] text-slate-500">رقم الإشهار الرسمي: ٨٥٨٥ لعام ٢٠١٢</p>
+        </footer>
+
+    </main>
+
+    <!-- Modal for Dynamic QR Code -->
+    <div id="qr-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="card-style bg-slate-900 rounded-3xl p-6 max-w-xs w-full text-center shadow-2xl transform scale-90 transition-transform duration-300 border-2 border-logoOrange/40" id="qr-modal-content">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-800">
+                <h3 class="font-extrabold text-white text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode text-logoOrange"></i>
+                    <span>رمز QR لمؤسسة أصدقاء الملائكة</span>
+                </h3>
+                <button onclick="closeQRModal()" class="w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-slate-300 mb-4 font-medium">امسح الرمز بواسطة الكاميرا للوصول المباشر للبطاقة التعريفية</p>
+
+            <!-- Dynamic QR Code Container -->
+            <div class="bg-white p-4 rounded-2xl inline-block border border-slate-700 shadow-inner mb-4">
+                <div id="qrcode-canvas" class="flex justify-center"></div>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="downloadQRImage()" class="w-full bg-logoGreen hover:bg-emerald-600 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-download"></i>
+                    <span>تنزيل صورة الرمز (PNG) للطباعة</span>
+                </button>
+                <button onclick="closeQRModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2 px-3 rounded-xl text-xs transition">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Set Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Toast Helper
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+
+            toast.classList.remove('opacity-0', '-translate-y-20', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', '-translate-y-20', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Clipboard Copy
+        function copyToClipboard(text, label) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(`تم نسخ ${label} بنجاح!`);
+                }).catch(() => fallbackCopy(text, label));
+            } else {
+                fallbackCopy(text, label);
+            }
+        }
+
+        function fallbackCopy(text, label) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            try {
+                document.execCommand('copy');
+                showToast(`تم نسخ ${label}!`);
+            } catch (e) {
+                showToast("تعذر النسخ التلقائي");
+            }
+            document.body.removeChild(input);
+        }
+
+        // Generate and Download vCard (.vcf)
+        function downloadVCard() {
+            const vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'FN;CHARSET=UTF-8:مؤسسة أصدقاء الملائكة لرعاية ذوي القدرات الخاصة',
+                'ORG;CHARSET=UTF-8:مؤسسة أصدقاء الملائكة (مشهرة برقم ٨٥٨٥ لعام ٢٠١٢)',
+                'TEL;TYPE=WORK,VOICE:01222785777',
+                'TEL;TYPE=CELL:01203228446',
+                'TEL;TYPE=CELL,WA:01228489636',
+                'ADR;TYPE=WORK;CHARSET=UTF-8:;;٦ ش محمد فارس من ش العبادي - عين شمس الغربية - المطرية;القاهرة;;;مصر',
+                'NOTE;CHARSET=UTF-8:InstaPay: asdkaelmalyka@instapay | فودافون كاش: 01024032754 | أورنج كاش: 01203228446',
+                'URL;TYPE=MAP:https://maps.app.goo.gl/5kfxaLahbkyYoUNaA',
+                'URL:https://www.facebook.com/share/hArsa9jZFX5x9kgJ/',
+                'END:VCARD'
+            ].join('\r\n');
+
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.setAttribute('download', 'مؤسسة_أصدقاء_الملائكة.vcf');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast("جاري تحميل بيانات الاتصال...");
+        }
+
+        // Web Share API
+        async function sharePage() {
+            const shareData = {
+                title: 'مؤسسة أصدقاء الملائكة',
+                text: 'مؤسسة أصدقاء الملائكة لرعاية ذوي القدرات الخاصة (المشهرة برقم ٨٥٨٥ لعام ٢٠١٢)',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (e) {
+                    console.log('Share dismissed');
+                }
+            } else {
+                copyToClipboard(window.location.href, 'رابط الصفحة');
+            }
+        }
+
+        // Dynamic Modal & QR Generator
+        function openQRModal() {
+            const modal = document.getElementById('qr-modal');
+            const modalContent = document.getElementById('qr-modal-content');
+            const qrContainer = document.getElementById('qrcode-canvas');
+
+            qrContainer.innerHTML = '';
+
+            new QRCode(qrContainer, {
+                text: window.location.href,
+                width: 170,
+                height: 170,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            modalContent.classList.remove('scale-90');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeQRModal() {
+            const modal = document.getElementById('qr-modal');
+            const modalContent = document.getElementById('qr-modal-content');
+
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-90');
+        }
+
+        function downloadQRImage() {
+            const container = document.getElementById('qrcode-canvas');
+            const img = container.querySelector('img');
+            const canvas = container.querySelector('canvas');
+
+            let src = '';
+            if (img && img.src) src = img.src;
+            else if (canvas) src = canvas.toDataURL('image/png');
+
+            if (src) {
+                const a = document.createElement('a');
+                a.href = src;
+                a.download = 'Angels_Friends_Foundation_QR.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showToast("تم تنزيل رمز QR بنجاح!");
+            } else {
+                showToast("تعذر استخراج صورة الرمز");
+            }
+        }
+
+        document.getElementById('qr-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeQRModal();
+        });
+    </script>
+</body>
+</html>
